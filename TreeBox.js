@@ -32,18 +32,11 @@ const TreeBox = ({ root, selectedNodeIds = [] }) => {
     width: "100%",
     layout: {
       hierarchical: {
-        enabled: true,
         direction: "UD",
         sortMethod: "directed"
       }
     },
-    edges: {
-      color: "#000000"
-    },
     nodes: {
-      borderWidth: 1,
-      borderWidthSelected: 2,
-      brokenImage: undefined,
       color: {
         border: "#333",
         background: "#bbb",
@@ -58,12 +51,6 @@ const TreeBox = ({ root, selectedNodeIds = [] }) => {
     }
   };
 
-  const events = {
-    select: function(event) {
-      var { nodes, edges } = event;
-    }
-  };
-
   const [network, setNetwork] = React.useState(null);
 
   React.useEffect(() => {
@@ -74,12 +61,7 @@ const TreeBox = ({ root, selectedNodeIds = [] }) => {
 
   return (
     <article>
-      <Graph
-        graph={graph}
-        options={options}
-        events={events}
-        getNetwork={setNetwork}
-      />
+      <Graph graph={graph} options={options} getNetwork={setNetwork} />
     </article>
   );
 };
